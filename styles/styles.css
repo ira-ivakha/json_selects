@@ -29,15 +29,6 @@ h2.select-header{
   color: #dddddd;
   text-shadow: 1px 0 2px #000000;
 }
-.loader{
-  display:none;
-  margin: 10px auto;
-  width:90%;
-  max-width: 700px;
-  padding:10px;
-  border: 1px solid #aaaaaa;
-  border-radius: 3px;
-}
 select:disabled {
   background: #eeeeee;
   box-shadow: none;

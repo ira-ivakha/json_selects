@@ -26,7 +26,7 @@
       <option value="0">- choose city -</option>
     </select>
   </form>
-  <div class="loader" id="loader1">Click here to load example...</div>
+  <div class="result" id="result"></div>
 
 </body>
 <script type="text/javascript">
@@ -36,6 +36,9 @@
       dataType: "text",
       success: function (data) {
         window.jsonString = $.parseJSON(data);
+      },
+      error: function(){
+        alert('Can\'t load file cities.json')
       }
     });
 
