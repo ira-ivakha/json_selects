@@ -6,7 +6,7 @@
 
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:600,400" rel="stylesheet" type="text/css">
   <link href="styles/styles.css" rel="stylesheet" type="text/css">
-  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
       <option value="0">- choose city -</option>
     </select>
   </form>
-  <div class="loader" id="loader1">Click here to load file Proag.html...</div>
+  <div class="loader" id="loader1">Click here to load example...</div>
 
 </body>
 <script type="text/javascript">
@@ -40,13 +40,13 @@
     });
 
     $('#loader1').click(function(){
-      $(this).load('proag.html');
+      $(this).load('example.json');
     });
 
     function getRegions(countryId){
       var i = 0,
-          options = '';
-      var regionList = Object.keys(jsonString[countryId]);
+          options = '',
+          regionList = Object.keys(jsonString[countryId]);
       while (i < regionList.length){
         options += '<option value="' +regionList[i]+ '">' + regionList[i] + '</option>';
         i++;
@@ -55,17 +55,35 @@
       $('#region_id').attr('disabled', false);
     };
 
-    function getCities(regionID){
-
+    function getCities(countryId, regionID){
+      var i = 0,
+          options = '',
+          cityList = jsonString[countryId][regionID];
+      while (i < cityList.length){
+        options += '<option value="' +cityList[i]+ '">' + cityList[i] + '</option>';
+        i++;
+      };
+      $('#city_id').html(options);
+      $('#city_id').attr('disabled', false);
     }
 
     $('#country_id').change(function(){
       var id=$(this).val();
+      $('#city_id').attr('disabled', true);
       if (id === '') {
         $('#region_id').attr('disabled', true).html('<option value=""> -choose region- </option>');
 
       }
       else getRegions(id);
+    });
+
+    $('#region_id').change(function(){
+      var id=$(this).val();
+      if (id === '') {
+        $('#city_id').attr('disabled', true).html('<option value=""> -choose city- </option>');
+
+      }
+      else getCities($('#country_id').val(),id);
     })
   });
 </script>
