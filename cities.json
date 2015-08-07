@@ -1,0 +1,15 @@
+{
+  "Canada":
+  {
+    "Saskatchevan": ["Regina","Saskatoon"],
+    "British Columbia":["Viktoria", "Vancouver"],
+    "Alberta": ["Edmonton","Calgary"]
+  },
+  "USA":
+  {
+    "Alabama":["Abbeville","Birmingham"],
+    "Texas": ["Dallas", "Tyler"],
+    "California": ["Stockton","Tustin"]
+  }
+
+}
